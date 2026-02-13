@@ -39,21 +39,31 @@ export default function ContattiPage() {
             ))}
           </div>
 
-          {/* Map */}
-          <ScrollReveal>
-            <div className="rounded-2xl overflow-hidden shadow-lg h-[400px]">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2827.8!2d9.6933!3d45.0526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDAzJzA5LjQiTiA5wrA0MScyNy4xIkU!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mappa YogaGea Piacenza"
-              />
-            </div>
-          </ScrollReveal>
+          {/* Maps */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {sedi.map((sede, i) => (
+              <ScrollReveal key={`${sede.nome}-map`} delay={i * 0.1}>
+                <div className="rounded-2xl overflow-hidden shadow-lg bg-white">
+                  <div className="px-5 py-4 border-b border-cream-dark/60">
+                    <h4 className="font-heading text-lg font-semibold text-charcoal">{sede.nome}</h4>
+                    <p className="text-xs text-charcoal-light mt-1">{sede.indirizzo}</p>
+                  </div>
+                  <div className="h-[320px]">
+                    <iframe
+                      src={`https://maps.google.com/maps?q=${sede.mapQuery}&z=16&output=embed`}
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={`Mappa ${sede.nome}`}
+                    />
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
