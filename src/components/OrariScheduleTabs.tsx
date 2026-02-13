@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
 
@@ -22,6 +23,85 @@ type Sede = {
   indirizzo: string;
   giorni: Giorno[];
 };
+
+const corsoSlugMap: Record<string, string> = {
+  "PILATES pers": "pilates-posturale",
+  PILATES: "pilates-posturale",
+  "YOGA & PILATES": "yoga-pilates",
+  "ROCKET YOGA insp.": "rocket-yoga-inspired",
+  "VINYASA KRAMA": "vinyasa-krama",
+  "QI GONG": "qi-gong",
+  "HATHA FLOW": "hatha-yoga-flow",
+  "HATHA YOGA": "hatha-yoga-flow",
+  "HATHA YOGA CLASSICO": "hatha-yoga-flow",
+  "YOGA FLOW": "hatha-yoga-flow",
+  "VIVEKA YOGA": "viveka-yoga",
+  ASHTANGA: "ashtanga",
+  MEDITAZIONE: "meditazione-vipassana",
+  "KATONAH YOGA": "katonah-inspired",
+  "BURNING YOGA": "burning-yoga",
+};
+
+const insegnanteSlugMap: Record<string, string> = {
+  Robi: "robi-morisi",
+  Roberto: "robi-morisi",
+  Lore: "lorenza-boni",
+  Lorenza: "lorenza-boni",
+  Paola: "paola-busconi",
+  Franci: "francesca-luppini",
+  Azzurra: "azzurra-corradini",
+  Marta: "marta-vegezzi",
+  Stefano: "stefano-molinari",
+  Barbara: "barbara-alberici",
+  Walt: "valter-chiusa",
+  Fede: "federica-burzoni",
+  Stefania: "stefania-casella",
+};
+
+function renderCorsoLink(nomeCorso: string) {
+  const slug = corsoSlugMap[nomeCorso];
+  if (!slug) {
+    return <p className="mt-2 text-base font-semibold text-charcoal">{nomeCorso}</p>;
+  }
+
+  return (
+    <p className="mt-2 text-base font-semibold text-charcoal">
+      <Link href={`/lezioni/${slug}`} className="text-terra hover:underline">
+        {nomeCorso}
+      </Link>
+    </p>
+  );
+}
+
+function renderInsegnanteLinks(rawInsegnante: string) {
+  const parts = rawInsegnante.split("+").map((part) => part.trim());
+
+  return parts.map((part, index) => {
+    let prefix = "";
+    let lookupName = part;
+
+    if (part.toLowerCase().startsWith("gruppo ")) {
+      prefix = "gruppo ";
+      lookupName = part.slice(7).trim();
+    }
+
+    const slug = insegnanteSlugMap[lookupName];
+
+    return (
+      <span key={`${rawInsegnante}-${part}-${index}`}>
+        {index > 0 && <span className="mx-1">+</span>}
+        {prefix}
+        {slug ? (
+          <Link href={`/insegnanti/${slug}`} className="text-terra hover:underline">
+            {lookupName}
+          </Link>
+        ) : (
+          lookupName
+        )}
+      </span>
+    );
+  });
+}
 
 const sedi: Sede[] = [
   {
@@ -176,8 +256,10 @@ export default function OrariScheduleTabs() {
                       <span className="inline-flex rounded-full bg-terra/12 px-3 py-1 text-xs font-semibold text-terra-dark">
                         {classe.orario}
                       </span>
-                      <p className="mt-2 text-base font-semibold text-charcoal">{classe.nome}</p>
-                      <p className="mt-1 text-xs uppercase tracking-wide text-charcoal-light">{classe.insegnante}</p>
+                      {renderCorsoLink(classe.nome)}
+                      <p className="mt-1 text-xs uppercase tracking-wide text-charcoal-light">
+                        {renderInsegnanteLinks(classe.insegnante)}
+                      </p>
                       {classe.nota && <p className="mt-2 text-xs text-terra-dark">{classe.nota}</p>}
                     </div>
                   ))}
