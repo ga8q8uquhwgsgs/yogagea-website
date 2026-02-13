@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Facebook, Instagram, Youtube } from "lucide-react";
+import { Menu, X, Facebook, Instagram, Youtube, Phone, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { contatti } from "@/data/siteData";
 
@@ -22,16 +23,13 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    setIsMobileOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     if (isMobileOpen) {
@@ -44,47 +42,69 @@ export default function Navbar() {
 
   return (
     <>
+      <div className="fixed inset-x-0 top-0 z-50 hidden border-b border-white/10 bg-charcoal text-cream-dark lg:block">
+        <div className="site-container flex h-10 items-center justify-between text-xs">
+          <div className="flex items-center gap-4">
+            <a href={`tel:${contatti.telefono}`} className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
+              <Phone size={13} /> {contatti.telefonoDisplay}
+            </a>
+            <a href={`mailto:${contatti.email}`} className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
+              <Mail size={13} /> {contatti.email}
+            </a>
+          </div>
+          <p className="tracking-wide text-cream-dark/75">Prima lezione su prenotazione • Piacenza</p>
+        </div>
+      </div>
+
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          "fixed left-0 right-0 z-50 transition-all duration-500",
+          "top-0 lg:top-10",
           isScrolled
             ? "bg-cream/95 backdrop-blur-md shadow-sm"
-            : "bg-charcoal/70 backdrop-blur-sm"
+            : isHome
+              ? "bg-charcoal/55 backdrop-blur-sm"
+              : "bg-charcoal/80 backdrop-blur-md"
         )}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="site-container">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <span className={cn(
-                "font-heading text-2xl md:text-3xl font-semibold tracking-wide transition-colors",
-                isScrolled ? "text-terra group-hover:text-terra-dark" : "text-white group-hover:text-cream-dark"
-              )}>
+            <Link href="/" className="group flex items-center gap-3 shrink-0">
+              <div className="relative h-12 w-12 md:h-14 md:w-14">
+                <Image
+                  src="/loto.png"
+                  alt="YogaGea"
+                  fill
+                  className="object-contain transition-transform duration-300 group-hover:scale-105"
+                  priority
+                />
+              </div>
+              <span
+                className={cn(
+                  "font-heading text-2xl md:text-3xl font-semibold tracking-wide transition-colors",
+                  isScrolled ? "text-terra group-hover:text-terra-dark" : "text-white group-hover:text-cream-dark"
+                )}
+              >
                 YOGAGEA
-              </span>
-              <span className={cn(
-                "hidden sm:block text-xs tracking-widest uppercase transition-colors",
-                isScrolled ? "text-charcoal-light" : "text-white/60"
-              )}>
-                a.s.d.
               </span>
             </Link>
 
             {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1 rounded-full border border-charcoal/10 bg-white/55 p-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "px-3 py-2 text-sm tracking-wide transition-all duration-300 rounded-lg",
+                    "rounded-full px-3 py-2 text-sm tracking-wide transition-all duration-300",
                     isScrolled
                       ? pathname === link.href
                         ? "text-terra font-medium bg-terra/10"
                         : "text-charcoal-light hover:text-terra hover:bg-terra/10"
                       : pathname === link.href
-                        ? "text-white font-medium bg-white/10"
-                        : "text-white/80 hover:text-white hover:bg-white/10"
+                        ? "text-charcoal font-medium bg-white/30"
+                        : "text-charcoal/85 hover:text-charcoal hover:bg-white/20"
                   )}
                 >
                   {link.label}
@@ -153,7 +173,7 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 bg-cream/98 backdrop-blur-xl lg:hidden"
           >
-            <div className="flex flex-col items-center justify-center h-full gap-2">
+            <div className="flex flex-col items-center justify-center h-full gap-2 px-6">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -164,6 +184,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    onClick={() => setIsMobileOpen(false)}
                     className={cn(
                       "block text-2xl font-heading tracking-wide py-3 px-6 rounded-xl transition-all",
                       pathname === link.href
@@ -195,11 +216,12 @@ export default function Navbar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="mt-6"
+                className="mt-6 w-full max-w-sm"
               >
                 <Link
                   href="/iscrizione"
-                  className="bg-terra text-white px-8 py-3 rounded-full font-medium hover:bg-terra-dark transition-all"
+                  onClick={() => setIsMobileOpen(false)}
+                  className="block text-center bg-terra text-white px-8 py-3 rounded-full font-medium hover:bg-terra-dark transition-all"
                 >
                   Iscriviti Online
                 </Link>

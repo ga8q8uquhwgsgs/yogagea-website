@@ -51,8 +51,8 @@ export default async function LezioneDetailPage({ params }: { params: Promise<{ 
       </section>
 
       {/* Content */}
-      <section className="py-16 md:py-24 bg-cream">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <section className="section-space bg-cream">
+        <div className="site-container max-w-4xl">
           <ScrollReveal>
             <Link
               href="/lezioni"

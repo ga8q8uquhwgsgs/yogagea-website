@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
+import PageHero from "@/components/PageHero";
 import { contatti, legal, sedi } from "@/data/siteData";
-import { MapPin, Mail } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Chi Siamo",
@@ -14,31 +13,15 @@ export const metadata: Metadata = {
 export default function ChiSiamoPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-[50vh] min-h-[400px] overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=1920&q=80"
-          alt="Chi siamo - YogaGea"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 to-charcoal/70" />
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <div className="text-center px-4">
-            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-white font-semibold">
-              Chi Siamo
-            </h1>
-            <div className="mt-4 flex justify-center">
-              <div className="w-16 h-[2px] bg-white/40" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Chi Siamo"
+        subtitle="YogaGea a.s.d. è uno spazio di pratica, studio e crescita condivisa."
+        image="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=1920&q=80"
+      />
 
       {/* Cosa si fa */}
-      <section className="py-20 md:py-28 bg-cream">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <section className="section-space bg-cream">
+        <div className="site-container max-w-4xl">
           <ScrollReveal>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-charcoal mb-8">
               Cosa si fa a yogagea a.s.d.
@@ -77,8 +60,8 @@ export default function ChiSiamoPage() {
       </section>
 
       {/* Quando nasce */}
-      <section className="py-20 md:py-28 bg-cream-dark">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <section className="section-space bg-cream-dark/70">
+        <div className="site-container max-w-4xl">
           <ScrollReveal>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-charcoal mb-8">
               Quando nasce l&apos;attività dell&apos;associazione
@@ -96,8 +79,8 @@ export default function ChiSiamoPage() {
       </section>
 
       {/* Scopo */}
-      <section className="py-20 md:py-28 bg-cream">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <section className="section-space bg-cream">
+        <div className="site-container max-w-4xl">
           <ScrollReveal>
             <h2 className="font-heading text-3xl md:text-4xl font-semibold text-charcoal mb-8">
               Qual è lo scopo di yogagea a.s.d.
@@ -145,8 +128,8 @@ export default function ChiSiamoPage() {
       </section>
 
       {/* Le Nostre Sedi */}
-      <section className="py-20 md:py-28 bg-cream-dark">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="section-space bg-cream-dark/70">
+        <div className="site-container">
           <SectionHeading title="Le Nostre Sedi" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {sedi.map((sede, i) => (

@@ -19,7 +19,10 @@ html {
 }
 
 body {
-  background-color: var(--color-cream);
+  background:
+    radial-gradient(1200px 700px at 10% -10%, rgba(155, 138, 173, 0.15), transparent 60%),
+    radial-gradient(900px 500px at 95% 0%, rgba(156, 175, 136, 0.12), transparent 55%),
+    var(--color-cream);
   color: var(--color-charcoal);
   font-family: var(--font-body), system-ui, sans-serif;
 }
@@ -45,4 +48,58 @@ h1, h2, h3, h4, h5, h6 {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-terra);
+}
+
+.site-container {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    padding-inline: 2rem;
+  }
+}
+
+.section-space {
+  padding-block: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-space {
+    padding-block: 7rem;
+  }
+}
+
+.card-soft {
+  background: color-mix(in srgb, white 86%, var(--color-cream) 14%);
+  border: 1px solid color-mix(in srgb, var(--color-terra) 18%, white 82%);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 35px rgba(44, 44, 44, 0.06);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+}
+
+.pill-label {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--color-terra) 12%, white 88%);
+  color: var(--color-terra-dark);
 }

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import SectionHeading from "@/components/SectionHeading";
+import PageHero from "@/components/PageHero";
 import { lezioni } from "@/data/lezioni";
 
 export const metadata: Metadata = {
@@ -14,34 +14,15 @@ export const metadata: Metadata = {
 export default function LezioniPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-[50vh] min-h-[400px] overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=1920&q=80"
-          alt="Lezioni di Yoga"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 to-charcoal/70" />
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <div className="text-center px-4">
-            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-white font-semibold">
-              Le Nostre Lezioni
-            </h1>
-            <div className="mt-4 flex justify-center">
-              <div className="w-16 h-[2px] bg-white/40" />
-            </div>
-            <p className="mt-6 text-lg text-cream-dark/80 max-w-xl mx-auto">
-              {lezioni.length} discipline per il tuo benessere psicofisico
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Le Nostre Lezioni"
+        subtitle={`${lezioni.length} discipline per il tuo benessere psicofisico`}
+        image="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=1920&q=80"
+      />
 
       {/* Grid lezioni */}
-      <section className="py-20 md:py-28 bg-cream">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="section-space bg-cream">
+        <div className="site-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {lezioni.map((lezione, i) => (
               <ScrollReveal key={lezione.slug} delay={i * 0.04}>

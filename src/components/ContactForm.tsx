@@ -9,21 +9,21 @@ export default function ContactForm() {
         <input
           type="text"
           placeholder="Nome e Cognome"
-          className="w-full px-4 py-3.5 rounded-xl border border-cream-dark/50 bg-cream/30 focus:outline-none focus:border-terra focus:ring-2 focus:ring-terra/10 transition-all text-sm"
+          className="w-full rounded-xl border border-terra/15 bg-cream/40 px-4 py-3.5 text-sm transition-all placeholder:text-charcoal-light/55 focus:border-terra focus:outline-none focus:ring-2 focus:ring-terra/10"
         />
       </div>
       <div>
         <input
           type="email"
           placeholder="Email"
-          className="w-full px-4 py-3.5 rounded-xl border border-cream-dark/50 bg-cream/30 focus:outline-none focus:border-terra focus:ring-2 focus:ring-terra/10 transition-all text-sm"
+          className="w-full rounded-xl border border-terra/15 bg-cream/40 px-4 py-3.5 text-sm transition-all placeholder:text-charcoal-light/55 focus:border-terra focus:outline-none focus:ring-2 focus:ring-terra/10"
         />
       </div>
       <div>
         <textarea
           placeholder="Il tuo messaggio..."
           rows={6}
-          className="w-full px-4 py-3.5 rounded-xl border border-cream-dark/50 bg-cream/30 focus:outline-none focus:border-terra focus:ring-2 focus:ring-terra/10 transition-all text-sm resize-none"
+          className="w-full resize-none rounded-xl border border-terra/15 bg-cream/40 px-4 py-3.5 text-sm transition-all placeholder:text-charcoal-light/55 focus:border-terra focus:outline-none focus:ring-2 focus:ring-terra/10"
         />
       </div>
       <label className="flex items-start gap-3 cursor-pointer">

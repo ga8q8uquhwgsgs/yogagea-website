@@ -23,7 +23,7 @@ function AccordionItem({
         onClick={() => setOpen(!open)}
         className="flex items-center justify-between w-full py-5 text-left group"
       >
-        <span className="font-cormorant text-xl text-charcoal group-hover:text-terra transition-colors">
+        <span className="font-heading text-xl text-charcoal group-hover:text-terra transition-colors">
           {title}
         </span>
         <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.3 }}>
@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
       <section className="pt-32 pb-16 bg-charcoal text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <ScrollReveal>
-            <h1 className="font-cormorant text-4xl md:text-6xl mb-4">
+            <h1 className="font-heading text-4xl md:text-6xl mb-4">
               Privacy &amp; Cookie Policy
             </h1>
           </ScrollReveal>

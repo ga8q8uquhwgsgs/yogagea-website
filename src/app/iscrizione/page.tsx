@@ -4,7 +4,6 @@ import { useState, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, Check, FileText, ExternalLink, Loader2 } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
-import SectionHeading from '@/components/SectionHeading';
 
 /* ─── types ─── */
 interface FormData {
@@ -230,7 +229,7 @@ export default function IscrizionePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="font-cormorant text-4xl md:text-5xl text-charcoal mb-4"
+            className="font-heading text-4xl md:text-5xl text-charcoal mb-4"
           >
             Iscrizione Inviata!
           </motion.h1>
@@ -273,7 +272,7 @@ export default function IscrizionePage() {
         />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <ScrollReveal>
-            <h1 className="font-cormorant text-4xl md:text-6xl mb-4">
+            <h1 className="font-heading text-4xl md:text-6xl mb-4">
               Modulo di Iscrizione
             </h1>
           </ScrollReveal>
@@ -296,7 +295,7 @@ export default function IscrizionePage() {
             <span className="text-sm uppercase tracking-widest text-terra font-medium">
               Passo {step} di 5
             </span>
-            <h2 className="font-cormorant text-2xl md:text-3xl text-charcoal mt-1">
+            <h2 className="font-heading text-2xl md:text-3xl text-charcoal mt-1">
               {steps[step - 1].label}
             </h2>
           </div>
@@ -517,7 +516,7 @@ export default function IscrizionePage() {
                   {step === 2 && (
                     <div className="space-y-6">
                       <div className="bg-cream/60 rounded-xl p-6">
-                        <h3 className="font-cormorant text-xl text-charcoal mb-3">
+                        <h3 className="font-heading text-xl text-charcoal mb-3">
                           Adesione all&apos;Associazione YogaGea ASD
                         </h3>
                         <p className="text-sm text-charcoal-light leading-relaxed mb-4">
@@ -543,7 +542,7 @@ export default function IscrizionePage() {
                       </div>
 
                       <div className="bg-cream/60 rounded-xl p-6">
-                        <h3 className="font-cormorant text-xl text-charcoal mb-3">
+                        <h3 className="font-heading text-xl text-charcoal mb-3">
                           Dichiarazione del socio
                         </h3>
                         <div className="text-sm text-charcoal-light leading-relaxed space-y-2 mb-4">
@@ -600,7 +599,7 @@ export default function IscrizionePage() {
                   {step === 3 && (
                     <div className="space-y-6">
                       <div className="bg-cream/60 rounded-xl p-6">
-                        <h3 className="font-cormorant text-xl text-charcoal mb-3">
+                        <h3 className="font-heading text-xl text-charcoal mb-3">
                           Tesseramento ASI – Associazioni Sportive e Sociali Italiane
                         </h3>
                         <p className="text-sm text-charcoal-light leading-relaxed mb-4">
@@ -660,7 +659,7 @@ export default function IscrizionePage() {
                   {step === 4 && (
                     <div className="space-y-6">
                       <div className="bg-cream/60 rounded-xl p-6">
-                        <h3 className="font-cormorant text-xl text-charcoal mb-3">
+                        <h3 className="font-heading text-xl text-charcoal mb-3">
                           Autorizzazione utilizzo immagini
                         </h3>
                         <p className="text-sm text-charcoal-light leading-relaxed mb-4">
@@ -690,7 +689,7 @@ export default function IscrizionePage() {
                       </label>
 
                       <div className="bg-cream/60 rounded-xl p-6 mt-6">
-                        <h3 className="font-cormorant text-xl text-charcoal mb-3">
+                        <h3 className="font-heading text-xl text-charcoal mb-3">
                           Safeguarding – Tutela dei minori e dei soggetti vulnerabili
                         </h3>
                         <p className="text-sm text-charcoal-light leading-relaxed mb-4">
@@ -727,7 +726,7 @@ export default function IscrizionePage() {
                   {step === 5 && (
                     <div className="space-y-6">
                       <div className="bg-cream/60 rounded-xl p-6">
-                        <h3 className="font-cormorant text-xl text-charcoal mb-3">
+                        <h3 className="font-heading text-xl text-charcoal mb-3">
                           Informativa sulla Privacy
                         </h3>
                         <p className="text-sm text-charcoal-light leading-relaxed mb-3">
@@ -789,7 +788,7 @@ export default function IscrizionePage() {
 
                       {/* Riepilogo */}
                       <div className="bg-cream/60 rounded-xl p-6 mt-4">
-                        <h3 className="font-cormorant text-xl text-charcoal mb-4">
+                        <h3 className="font-heading text-xl text-charcoal mb-4">
                           Riepilogo iscrizione
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">

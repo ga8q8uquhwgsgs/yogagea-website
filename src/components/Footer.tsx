@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="bg-charcoal text-cream-dark">
       {/* Main Footer */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div className="site-container py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: Brand */}
           <div>
@@ -26,7 +26,7 @@ export default function Footer() {
             <p className="text-sm text-cream-dark/70 leading-relaxed mb-6">
               Un corpo flessibile + una mente flessibile = benessere.
               <br />
-              Inizia o continua a praticare con noi.
+              Corsi di yoga, pilates e meditazione a Piacenza.
             </p>
             <div className="flex gap-3">
               <a
@@ -116,7 +116,7 @@ export default function Footer() {
               </li>
             </ul>
             <div className="mt-6">
-              <p className="text-xs text-cream-dark/50 mb-2">NEWSLETTER</p>
+              <p className="text-xs text-cream-dark/50 mb-2 tracking-wider">NEWSLETTER</p>
               <p className="text-xs text-cream-dark/70 leading-relaxed">
                 Per iscriverti alla newsletter ed essere aggiornato sugli eventi e i corsi di yogagea scrivi a{" "}
                 <a href={`mailto:${contatti.email}`} className="text-terra hover:text-terra-light transition-colors">
@@ -133,17 +133,25 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+        <div className="site-container py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs text-cream-dark/50 text-center md:text-left">
               {legal.copyright} – {legal.asi} – {legal.coni} – {legal.cf} – {legal.piva}
             </p>
-            <Link
-              href="/privacy-policy"
-              className="text-xs text-cream-dark/50 hover:text-white transition-colors"
-            >
-              Privacy & Cookie Policy
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/iscrizione"
+                className="text-xs text-cream-dark/60 hover:text-white transition-colors"
+              >
+                Iscrizione Online
+              </Link>
+              <Link
+                href="/privacy-policy"
+                className="text-xs text-cream-dark/60 hover:text-white transition-colors"
+              >
+                Privacy & Cookie Policy
+              </Link>
+            </div>
           </div>
         </div>
       </div>

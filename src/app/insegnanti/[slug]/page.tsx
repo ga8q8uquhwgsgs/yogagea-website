@@ -28,14 +28,14 @@ export default async function InsegnanteDetailPage({ params }: { params: Promise
 
   return (
     <>
-      <section className="pt-28 pb-16 md:pt-32 md:pb-24 bg-cream">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <section className="pt-36 section-space bg-cream lg:pt-40">
+        <div className="site-container max-w-6xl">
           <ScrollReveal>
             <Link
               href="/insegnanti"
-              className="inline-flex items-center gap-2 text-terra hover:text-terra-dark transition-colors mb-10"
+              className="mt-10 mb-10 inline-flex min-h-11 items-center gap-2 rounded-full border border-terra/20 bg-white px-5 py-3 text-sm font-medium text-terra shadow-sm transition-all hover:bg-terra hover:text-white hover:shadow-md"
             >
-              <ArrowLeft size={18} /> Torna agli Insegnanti
+              <ArrowLeft size={18} /> Torna agli insegnanti
             </Link>
           </ScrollReveal>
 

@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ContactForm from "@/components/ContactForm";
 import SectionHeading from "@/components/SectionHeading";
+import PageHero from "@/components/PageHero";
 import { contatti, sedi } from "@/data/siteData";
 
 export const metadata: Metadata = {
@@ -15,31 +14,16 @@ export const metadata: Metadata = {
 export default function ContattiPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-[40vh] min-h-[350px] overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=1920&q=80"
-          alt="Contatti YogaGea"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 to-charcoal/70" />
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <div className="text-center px-4">
-            <h1 className="font-heading text-5xl md:text-6xl lg:text-7xl text-white font-semibold">
-              Contatti
-            </h1>
-            <div className="mt-4 flex justify-center">
-              <div className="w-16 h-[2px] bg-white/40" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Contatti"
+        subtitle="Siamo a disposizione per informazioni su corsi, orari e iscrizioni."
+        image="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=1920&q=80"
+        compact
+      />
 
       {/* Dove Siamo */}
-      <section className="py-20 md:py-28 bg-cream">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="section-space bg-cream">
+        <div className="site-container">
           <SectionHeading title="Dove Siamo" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {sedi.map((sede, i) => (
@@ -74,8 +58,8 @@ export default function ContattiPage() {
       </section>
 
       {/* Per Info + Form */}
-      <section className="py-20 md:py-28 bg-cream-dark">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="section-space bg-cream-dark/70">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Info */}
             <div>
